@@ -4,70 +4,128 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="contact form example">
-  <title>Contact Form Example</title>
+  <title>Receip tracker</title>
 </head>
 
 <body>
-  <h2 class="content-head is-center">Contact Us!</h2>
-  <aside>
-       <p>
-           We would <em>love</em> to hear from you! </p>
-           <p>Please use the <b><em>Contact Form</em></b>
-           to send us a message.
-       </p>
+  <h2 class="content-head is-center">Expenses Form</h2>
+  <aside><p>The best way to financial literacy is thru tracking where your money goes to. - Unknown</p>
    </aside>
+
+  <!-- Customise the Thankyou Message People See when they submit the form: -->
+  <div style="display:none;" id="thankyou_message">
+    <h2>Expense recorded!</h2>
+  </div>
 
 <!-- START HERE -->
    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-   <!-- Style The Contact Form How Ever You Prefer -->
    <link rel="stylesheet" href="https://cdn.rawgit.com/dwyl/learn-to-send-email-via-google-script-html-no-server/master/style.css">
 
-  <form id="gform" method="POST" class="pure-form pure-form-stacked" data-email="example@email.net"
-  action="https://script.google.com/macros/s/AKfycbwMxYDrufp73bKdU8gMvxFDdHRuzcR4IKQUB33B7GqwyfyZS04/exec">
+  <form id="gform" method="POST" class="pure-form pure-form-stacked"
+  action="https://script.google.com/macros/s/AKfycbw8vw-nNSLr3z4ORjKA7HW5xi10itPOM_im_y2zLYhT4BoDxaNK/exec">
     <!-- change the form action to your script url -->
 
     <fieldset class="pure-group">
-      <label for="name">Name: </label>
-      <input id="name" name="name" placeholder="What your Mom calls you" />
+      <label for="date">Date of transaction: </label>
+      <input id="date" type="date" name="date" value="" placeholder="Date" />
     </fieldset>
 
     <fieldset class="pure-group">
-      <label for="message">Message: </label>
-      <textarea id="message" name="message" rows="10"
-      placeholder="Tell us what's on your mind..."></textarea>
-    </fieldset>
+      <label for="time">Time: </label>
+      <input id="time" type="time" name="time" placeholder="time" />
+    </fieldset>  
 
     <fieldset class="pure-group">
-      <label for="email"><em>Your</em> Email Address:</label>
-      <input id="email" name="email" type="email" value=""
-      required placeholder="your.name@email.com"/>
-      <span id="email-invalid" style="display:none">
-        Must be a valid email address</span>
-    </fieldset>
+      <label for="description">Description: </label>
+      <input id="description" name="description" placeholder="Description" />
+    </fieldset>  
 
     <fieldset class="pure-group">
-      <label for="color">Favourite Color: </label>
-      <input id="color" name="color" placeholder="green" />
-    </fieldset>
+      <label for="description">Provider/Store: </label>
+      <input id="provider" name="provider" placeholder="Provider/Store" />
+    </fieldset>  
 
-    <button class="button-success pure-button button-xlarge">
+    <fieldset class="pure-group">
+      <label for="category">Category: </label>
+      <select id="category" name="category">
+        <option selected>Unknown</option>
+        <option>Groceries</option>
+        <option>Household</option>
+        <option>Take-away</option>
+        <option>Dine-out</option>
+        <option>Ovenue</option>
+        <option>Parking</option>
+        <option>Petrol</option>
+        <option>Admission/Tickets</option>
+        <option>Raden - personal</option>  
+        <option>Raden - supplements</option>      
+        <option>Craig - personal</option>    
+        <option>Medical</option>     
+        <option>Robert Court</option>   
+        <option>Clothes</option>     
+        <option>Gifts</option>               
+      </select>
+    </fieldset>  
+
+    <fieldset class="pure-group">
+      <label for="project">Project: </label>
+      <select id="project" name="project">
+        <option selected>Not applicable</option>
+        <option>New Zealand 2018</option>
+        <option>Raden - Tax</option>
+        <option>Craig - Tax</option>
+        <option>Raden - Birthday 2018</option>
+      </select>
+    </fieldset>      
+
+    <fieldset class="pure-group">
+      <label for="qty">Quantity: </label>
+      <input id="qty" name="qty" placeholder="1" />
+    </fieldset>  
+
+    <fieldset class="pure-group">
+      <label for="cost">Cost: </label>
+      <input id="cost" name="cost" placeholder="0.00" />
+    </fieldset>  
+
+    <fieldset class="pure-group">
+      <label for="ucost">Unit cost: </label>
+      <input id="ucost" name="ucost" placeholder="0.00" />
+    </fieldset>  
+
+    <fieldset class="pure-group">
+      <label for="total">Total: </label>
+      <input id="total" name="total" placeholder="0.00" />
+    </fieldset>  
+
+    <fieldset class="pure-group">
+      <label for="savings">Savings: </label>
+      <input id="savings" name="savings" placeholder="0.00" />
+    </fieldset>    
+
+    <fieldset class="pure-group">
+      <label for="method">Payment method: </label>
+      <select id="method" name="method">
+        <option selected>Unknown</option>
+        <option>Mastercard</option>
+        <option>AMEX - Velocity</option>
+        <option>AMEX - Westpac</option>
+        <option>Visa - Debit</option>
+        <option>Cash</option>
+      </select>
+    </fieldset>       
+
+    <button class="button-success pure-button button-xlarge" onclick="topFunction()" >
       <i class="fa fa-paper-plane"></i>&nbsp;Send</button>
 
   </form>
 
-  <!-- Customise the Thankyou Message People See when they submit the form: -->
-  <div style="display:none;" id="thankyou_message">
-    <h2><em>Thanks</em> for contacting us!
-      We will get back to you soon!</h2>
-  </div>
+
 
   <!-- Submit the Form to Google Using "AJAX" -->
-  <script data-cfasync="false" type="text/javascript"
-  src="https://cdn.rawgit.com/dwyl/learn-to-send-email-via-google-script-html-no-server/master/form-submission-handler.js"></script>
-  <!-- <script data-cfasync="false" type="text/javascript"
-  src="/form-submission-handler.js"></script> -->
-<!-- END -->
+  <script data-cfasync="false" type="text/javascript" src="form-submission-handler.js"></script>
+  <!-- END -->
 
 </body>
 </html>

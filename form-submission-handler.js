@@ -1,3 +1,7 @@
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+} 
 
 function validEmail(email) { // see:
   var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
@@ -87,11 +91,15 @@ function handleFormSubmit(event) {  // handles form submit withtout any jquery
     xhr.onreadystatechange = function() {
         console.log( xhr.status, xhr.statusText )
         console.log(xhr.responseText);
-        document.getElementById("gform").style.display = "none"; // hide form
+        
+
+        //document.getElementById("gform").style.display = "none"; // hide form
         var thankYouMessage = document.getElementById("thankyou_message");
         if (thankYouMessage) {
           thankYouMessage.style.display = "block";
         }
+        
+
         return;
     };
     // url encode form data for sending as post data
